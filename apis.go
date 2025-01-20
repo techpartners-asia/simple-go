@@ -94,7 +94,7 @@ func (s *simple) authSimple() (authRes SimpleGetTokenResponse, err error) {
 	}
 
 	if res.StatusCode != http.StatusOK {
-		return authRes, fmt.Errorf("%s-Storepay auth response: %s", time.Now().Format(utils.TimeFormatYYYYMMDDHHMMSS), res.Status)
+		return authRes, fmt.Errorf("%s-Simple auth response: %s", time.Now().Format(utils.TimeFormatYYYYMMDDHHMMSS), res.Status)
 	}
 
 	body, _ := io.ReadAll(res.Body)

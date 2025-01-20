@@ -52,7 +52,7 @@ func (s *simple) CreateInvoice(input SimpleCreateInvoiceInput) (SimpleCreateInvo
 }
 
 func (s *simple) SendInvoiceToNumber(input SimpleSendInvoiceToNumberRequest) (SimpleSendInvoiceToNumberResponse, error) {
-	res, err := s.httpRequest(input, SimpleSendInvoiceToNumber, "")
+	res, err := s.httpRequest(input, SimpleSendInvoiceToNumber, "?invoice_uuid="+input.InvoiceUUID+"&mobile="+input.Mobile)
 	if err != nil {
 		return SimpleSendInvoiceToNumberResponse{}, err
 	}

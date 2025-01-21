@@ -63,7 +63,7 @@ func (s *simple) SendInvoiceToNumber(input SimpleSendInvoiceToNumberRequest) (Si
 }
 
 func (s *simple) GetInvoice(input SimpleGetInvoiceRequest) (SimpleSendInvoiceToNumberResponse, error) {
-	res, err := s.httpRequest(input, SimpleGetInvoice, "")
+	res, err := s.httpRequest(input, SimpleGetInvoice, "?order_id="+input.OrderID+"&simple_id="+input.SimpleID)
 	if err != nil {
 		return SimpleSendInvoiceToNumberResponse{}, err
 	}

@@ -86,4 +86,19 @@ type (
 		OrderID       string `json:"order_id"`
 		SimpleID      string `json:"simple_id"`
 	}
+
+	SimpleChangeInvoiceStatusRequest struct {
+		OrderID   string `json:"order_id"`
+		Total     int    `json:"total"`
+		CbsStatus string `json:"cbs_status"` // DELIVERED, CAMCELED
+	}
+
+	SimpleChangeInvoiceStatusResponse struct {
+		Stat Stat `json:"stat"`
+	}
+
+	Stat struct {
+		Code string `json:"code"`
+		Desc string `json:"desc"`
+	}
 )

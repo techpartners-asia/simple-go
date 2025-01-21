@@ -15,6 +15,7 @@ type Simple interface {
 	CreateInvoice(input SimpleCreateInvoiceInput) (SimpleCreateInvoiceResponse, error)
 	SendInvoiceToNumber(input SimpleSendInvoiceToNumberRequest) (SimpleSendInvoiceToNumberResponse, error)
 	GetInvoice(input SimpleGetInvoiceRequest) (SimpleSendInvoiceToNumberResponse, error)
+	ChangeInvoiceStatus(input SimpleChangeInvoiceStatusRequest) (SimpleChangeInvoiceStatusResponse, error)
 	// GetInvoiceByInvoiceID(invoiceID string) (SimpleInvoiceDetailResponse, error)
 	// GetInvoiceByOrderNumber(orderNumber string) (SimpleInvoiceDetailResponse, error)
 	Close()
@@ -69,6 +70,17 @@ func (s *simple) GetInvoice(input SimpleGetInvoiceRequest) (SimpleSendInvoiceToN
 	}
 
 	var response SimpleSendInvoiceToNumberResponse
+	json.Unmarshal(res, &response)
+	return response, nil
+}
+
+func (s *simple) ChangeInvoiceStatus(input SimpleChangeInvoiceStatusRequest) (SimpleChangeInvoiceStatusResponse, error) {
+	res, err := s.httpRequest(input, SimpleChangeInvoiceStatus, "")
+	if err != nil {
+		return SimpleChangeInvoiceStatusResponse{}, err
+	}
+
+	var response SimpleChangeInvoiceStatusResponse
 	json.Unmarshal(res, &response)
 	return response, nil
 }

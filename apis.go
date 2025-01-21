@@ -30,6 +30,10 @@ var (
 		Url:    "/mbank-integration-gateway-service/integration/checkInvoice/merchant",
 		Method: http.MethodGet,
 	}
+	SimpleChangeInvoiceStatus = utils.API{
+		Url:    "mbank-integration-gateway-service/integration/invoiceDelivered",
+		Method: http.MethodPost,
+	}
 )
 
 func (p *simple) httpRequest(body interface{}, api utils.API, urlExt string) (response []byte, err error) {
